@@ -1,6 +1,4 @@
 export interface CharacterProps {
-    map(arg0: (character: CharacterProps) => import("react").JSX.Element): import("react").ReactNode;
-    length: number;
     id: number;
     name: string;
     status: string;

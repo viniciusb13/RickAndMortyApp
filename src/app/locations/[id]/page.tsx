@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { getLocation, getMultipleCharacters } from '@/lib/axios'
+import { getCharacter, getLocation, getMultipleCharacters } from '@/lib/axios'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import CharacterCard from '@/components/CharacterCard'
@@ -11,7 +11,8 @@ import Loading from '@/components/Loading/Loading'
 const Location = ({ params }: {params: {id: number}}) => {
   const [location, setLocation] = useState({} as LocationProps)
   const [loading, setLoading] = useState(false)
-  const [characters, setCharacters] = useState([] as Characters |{} as CharacterProps)
+  const [characters, setCharacters] = useState([] as Characters | null)
+  const [character, setCharacter] = useState({} as CharacterProps | null)
   const residentList = [] as number[]
 
   useEffect(() => {
@@ -26,9 +27,18 @@ const Location = ({ params }: {params: {id: number}}) => {
       residentList.push(Number(resident.split('/').pop()))
     })
    
-    if(residentList.length > 0) {
+    if(residentList.length > 1) {
       getMultipleCharacters(residentList).then((res: any) => {
         setCharacters(res)
+        setCharacter(null)
+        setLoading(false)
+      })
+    }
+
+    if(residentList.length === 1) {
+      getCharacter(residentList[0]).then((res: any) => {
+        setCharacter(res)
+        setCharacters(null)
         setLoading(false)
       })
     }
@@ -60,7 +70,7 @@ const Location = ({ params }: {params: {id: number}}) => {
       <div>
         <h2 className="text-center font-medium text-[#8E8E93] tracking-[0.15px] text-xl">Residents</h2>
         <div className="flex gap-2  justify-center items-center flex-wrap">
-          {characters.length > 1 ? 
+          {characters &&
             characters?.map((character: CharacterProps) => (
               <CharacterCard
                 key={character.id}
@@ -69,15 +79,16 @@ const Location = ({ params }: {params: {id: number}}) => {
                 image={character.image}
                 url={`characters/${character.id}`}
               />
-          )) : 
+          ))}
+          {
+            character &&
               <CharacterCard
-                key={characters.id}
-                name={characters.name}
-                species={characters.species}
-                image={characters.image}
-                url={`characters/${characters.id}`}
+                key={character?.id}
+                name={character?.name}
+                species={character?.species}
+                image={character?.image}
+                url={`characters/${character?.id}`}
               />
-              
           }
         </div>
       </div>
