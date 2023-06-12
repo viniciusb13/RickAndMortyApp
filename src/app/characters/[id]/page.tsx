@@ -4,15 +4,15 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react';
 
-import { getCharacter, getEpisode, getMultipleEpisodes } from '@/lib/axios'
+import { getCharacter, getMultipleEpisodes } from '@/lib/axios'
 import InfoCard from '@/components/InfoCard'
 import { CharacterProps } from '@/interfaces/CharacterProps'
-import { Episodes } from '@/interfaces/EpisodeProps'
+import { EpisodeProps, Episodes } from '@/interfaces/EpisodeProps'
 import Loading from '@/components/Loading/Loading';
 
 const Character = ({ params }: { params: {id: number}}) => {
   const [character, setCharacter] = useState({} as CharacterProps)
-  const [episodes, setEpisodes] = useState([] as Episodes)
+  const [episodes, setEpisodes] = useState([] as Episodes | {} as EpisodeProps)
   const [loading, setLoading] = useState(false)
   const episodeList = [] as number[]
 
@@ -102,7 +102,7 @@ const Character = ({ params }: { params: {id: number}}) => {
           <h2 className="text-[#8E8E93] font-medium text-xl">{character.episode?.length > 1 ? 'Episodes' : 'Episode'}</h2>
           <div className="flex flex-col w-[413px]">
             {episodes.length > 1 ? 
-              episodes.map((episode) => (
+              episodes.map((episode: EpisodeProps) => (
                 <div key={episode.id} className="border-b-2 p-3">
                   <Link href={`episodes/${episode.id}`}>
                     <h3 className="font-bold text-md text-[#081f32] pb-1">{episode.episode}</h3>

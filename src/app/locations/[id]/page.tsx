@@ -11,7 +11,7 @@ import Loading from '@/components/Loading/Loading'
 const Location = ({ params }: {params: {id: number}}) => {
   const [location, setLocation] = useState({} as LocationProps)
   const [loading, setLoading] = useState(false)
-  const [characters, setCharacters] = useState([] as Characters)
+  const [characters, setCharacters] = useState([] as Characters |{} as CharacterProps)
   const residentList = [] as number[]
 
   useEffect(() => {
