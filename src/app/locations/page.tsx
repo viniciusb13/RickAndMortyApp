@@ -26,7 +26,7 @@ const Locations = () => {
 
   return (
     <div className="text-center">
-      <h1 className="font-medium uppercase text-6xl my-8">Locations</h1>
+      <h1 className="font-medium uppercase sm:text-2xl md:text-4xl lg:text-6xl my-8">Locations</h1>
       <div className="flex gap-2  justify-center items-center flex-wrap">
         {locations.map((location: LocationProps) => (
           <LocationCard

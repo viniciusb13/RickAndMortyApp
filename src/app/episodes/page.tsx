@@ -26,7 +26,7 @@ const Episodes = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="font-medium uppercase text-6xl my-8">Episodes</h1>
+      <h1 className="font-medium uppercase sm:text-2xl md:text-4xl lg:text-6xl my-8">Episodes</h1>
       <div className="flex gap-2  justify-center items-center flex-wrap">
         {episodes.map((episode: EpisodeProps) => (
           <EpisodeCard 

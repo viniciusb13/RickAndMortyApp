@@ -63,15 +63,15 @@ const Character = ({ params }: { params: {id: number}}) => {
       <div className="flex flex-col items-center mb-10 ">
         <Image
           src={character.image}
-            height={300}
-            width={300}
-            alt={character.name}
-            className="rounded-full border-[5px] border-[#F2F2F7] mb-4"
-          />
-        <h1 className="text-[#081F32] font-normal text-5xl">{character.name}</h1>
+          height={300}
+          width={300}
+          alt={character.name}
+          className="rounded-full border-[5px] border-[#F2F2F7] mb-4 w-[250px] md:w-[350px]"
+        />
+        <h1 className="text-[#081F32] font-normal text-4xl lg:text-5xl">{character.name}</h1>
 
       </div>
-      <div className="flex">
+      <div className="flex flex-col lg:flex-row">
         <div className="p-8">
           <h2 className="text-[#8E8E93] font-medium text-xl" >Informations</h2>
           <div className="flex flex-col w-[413px]">

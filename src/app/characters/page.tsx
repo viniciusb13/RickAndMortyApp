@@ -27,7 +27,7 @@ const Characters = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="font-medium uppercase text-6xl my-8">Characters</h1>
+      <h1 className="font-medium uppercase sm:text-2xl md:text-4xl lg:text-6xl my-8">Characters</h1>
       <div className="flex gap-2  justify-center items-center flex-wrap">
         {characters.map((character: CharacterProps) => (
           <CharacterCard
