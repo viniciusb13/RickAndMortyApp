@@ -40,7 +40,7 @@ const Episode = ({ params }: {params: {id: number}}) => {
 
   return (
     <div>
-      <div className="flex w-full">
+      <div className="flex w-full justify-center md:justify-start">
         <Link href="/episodes" className="mb-4 flex">
           <ArrowLeft  />
           Go Back

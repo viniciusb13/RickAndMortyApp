@@ -50,7 +50,7 @@ const Location = ({ params }: {params: {id: number}}) => {
 
   return (
     <div>
-      <div className="flex w-full">
+      <div className="flex w-full justify-center md:justify-start">
         <Link href="/locations" className="mb-4 flex">
           <ArrowLeft  />
           Go Back

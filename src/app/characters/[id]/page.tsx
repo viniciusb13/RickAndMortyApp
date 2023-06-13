@@ -54,7 +54,7 @@ const Character = ({ params }: { params: {id: number}}) => {
 
   return (
     <div className="flex flex-col items-center pt-4">
-      <div className="flex w-full">
+      <div className="flex w-full justify-center md:justify-start">
         <Link href="/characters" className="mb-4 flex">
           <ArrowLeft  />
           Go Back
@@ -74,7 +74,7 @@ const Character = ({ params }: { params: {id: number}}) => {
       <div className="flex flex-col lg:flex-row">
         <div className="p-8">
           <h2 className="text-[#8E8E93] font-medium text-xl" >Informations</h2>
-          <div className="flex flex-col w-[413px]">
+          <div className="flex flex-col mix-w-[312px] max-w-[413px] w-[350px] lg:w-[413px]">
             <InfoCard
               title="Gender"
               info={character.gender}
@@ -111,7 +111,7 @@ const Character = ({ params }: { params: {id: number}}) => {
         </div>
         <div className="p-8 flex flex-col">
           <h2 className="text-[#8E8E93] font-medium text-xl">{character.episode?.length > 1 ? 'Episodes' : 'Episode'}</h2>
-          <div className="flex flex-col w-[413px]">
+          <div className="flex flex-col mix-w-[312px] max-w-[413px] w-[350px] lg:w-[413px]">
             {
               episodes && 
               episodes.map((episode: EpisodeProps) => (
