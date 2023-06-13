@@ -39,9 +39,18 @@ const Location = ({ params }: {params: {id: number}}) => {
       getCharacter(residentList[0]).then((res: any) => {
         setCharacter(res)
         setCharacters(null)
-        setLoading(false)
+      setLoading(false)
       })
     }
+
+    if(residentList.length === 0) {
+      setCharacter(null)
+      setCharacters(null)
+      setLoading(false)
+    }
+
+    console.log(location)
+
   }, [location])
 
   if(loading) {
@@ -81,7 +90,7 @@ const Location = ({ params }: {params: {id: number}}) => {
               />
           ))}
           {
-            character &&
+            character ?
               <CharacterCard
                 key={character?.id}
                 name={character?.name}
@@ -89,6 +98,8 @@ const Location = ({ params }: {params: {id: number}}) => {
                 image={character?.image}
                 url={`characters/${character?.id}`}
               />
+              :
+              <p className="p-3">0 Residents Found</p>
           }
         </div>
       </div>
