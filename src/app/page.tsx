@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-start pt-8">
       <Image src={RickAndMorty} height={500} width={700} alt="Rick and Morty" />
-      <div className="flex pt-8 flex-col md:flex-row">
+      <div className="pt-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 ">
         <Link href="/characters" className="m-8 border rounded">
           <Image src={CharactersImage} height={250} width={250} alt="cover"/>
           <p className='py-2 text-center text-xl'>Characters</p>
