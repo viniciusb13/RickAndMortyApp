@@ -21,7 +21,7 @@ const Header = () => {
   const menuClosedOverlay = 'hidden'
 
   return (
-    <div className="h-[60px] flex justify-between border px-5 sm:px-16 lg:px-40 items-center">
+    <header className="h-[60px] flex justify-between border px-5 sm:px-16 lg:px-40 items-center">
         <Link href="/" className="px-3">
             <Image
               src={LogoBlack}
@@ -30,11 +30,17 @@ const Header = () => {
               height={49}
             />
         </Link>
-        <div className="px-5 hidden sm:flex">
+        <ul className="px-5 hidden sm:flex">
+          <li>
             <Link href="/characters" className="px-3">Characters</Link>
+          </li>
+          <li>
             <Link href="/locations" className="px-3">Locations</Link>
+          </li>
+          <li>
             <Link href="/episodes" className="px-3">Episodes</Link>
-        </div>
+          </li>
+        </ul>
         <div className="px-5 sm:hidden hover:cursor-pointer" onClick={toggleMenu}>
           <Menu />
         </div>
@@ -42,14 +48,20 @@ const Header = () => {
             <div className="pt-4">
               <X onClick={toggleMenu} className="cursor-pointer" />
             </div>
-            <div className="flex flex-col mt-7">
-              <Link href="/characters" onClick={toggleMenu} className="px-3 text-3xl my-4 text-center">Characters</Link>
-              <Link href="/locations" onClick={toggleMenu} className="px-3 text-3xl my-4 text-center">Locations</Link>
-              <Link href="/episodes" onClick={toggleMenu} className="px-3 text-3xl my-4 text-center">Episodes</Link>
-            </div>
+            <ul className="flex flex-col mt-7">
+              <li className="p-4">
+                <Link href="/characters" onClick={toggleMenu} className="px-3 text-3xl my-4 text-center">Characters</Link>
+              </li>
+              <li className="p-4">
+                <Link href="/locations" onClick={toggleMenu} className="px-3 text-3xl my-4 text-center">Locations</Link>
+              </li>
+              <li className="p-4">
+                <Link href="/episodes" onClick={toggleMenu} className="px-3 text-3xl my-4 text-center">Episodes</Link>
+              </li>
+            </ul>
         </div>
         <div className={isActive ? menuOpenedOverlay : menuClosedOverlay} />
-    </div>
+    </header>
   )
 }
 

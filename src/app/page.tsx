@@ -1,10 +1,14 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect } from 'react'
+
 
 import RickAndMorty from '@/assets/FullLogo.svg'
 import CharactersImage from '@/assets/charactersImage.jpg'
 import LocationsImage from '@/assets/locationsImage.jpg'
 import EpisodesImage from '@/assets/episodesImage.jpeg'
+import { useRouter } from 'next/router'
 
 export default function Home() {
   return (
